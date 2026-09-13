@@ -26,4 +26,4 @@ for años in conductores :
         print(f" - pertenece a  {nombre} en un  {grado * 100:.1f}%")
 
         categoria = max(grados, key=grados.get)
-        print(f" => Categoría dominante: {categoria} (grados{grados[categoria]: . 2f}")
+        print(f" => Categoría dominante: {categoria} (grados{grados[categoria]: .2f}")
