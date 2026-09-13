@@ -1,0 +1,21 @@
+def membresia_triangular(x, a, b, c):
+    # Implementación computacional de las funciones a trozos
+    if x <= a or x >= c:
+        return 0.0
+    elif a < x <= b:
+        return (x - a) / (b - a)
+    elif b < x < c:
+        return (c - x) / (c - b)
+
+# Prueba de sensor financiero (Velocidad de ventas en unidades/dia)
+velocidad_actual = 45
+
+# Definición de conjuntos difusos para la velocidad de ventas
+grado_lento = membresia_triangular(velocidad_actual, 0, 10, 30)
+grado_normal = membresia_triangular(velocidad_actual, 20, 50, 80)
+grado_rapido = membresia_triangular(velocidad_actual, 60, 90, 120)
+
+print(f"Análisis Difuso para V={velocidad_actual}:")
+print(f"- Pertenece a LENTO en un {grado_lento*100}%")
+print(f"- Pertenece a NORMAL en un {grado_normal*100}%")
+print(f"- Pertenece a RÁPIDO en un {grado_rapido*100}%")
