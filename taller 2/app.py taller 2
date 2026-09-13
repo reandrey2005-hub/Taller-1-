@@ -7,15 +7,23 @@ def membresia_triangular(x, a, b, c):
     elif b < x < c:
         return (c - x) / (c - b)
 
-# Prueba de sensor financiero (Velocidad de ventas en unidades/dia)
-velocidad_actual = 45
+conjuntos = {
+    "Novato": (0, 0, 5),
+    "Intermedio": (2, 5, 8),
+    "Experto": (5, 10, 20)
+}
 
-# Definición de conjuntos difusos para la velocidad de ventas
-grado_lento = membresia_triangular(velocidad_actual, 0, 10, 30)
-grado_normal = membresia_triangular(velocidad_actual, 20, 50, 80)
-grado_rapido = membresia_triangular(velocidad_actual, 60, 90, 120)
+conductores = [3,6,12]
 
-print(f"Análisis Difuso para V={velocidad_actual}:")
-print(f"- Pertenece a LENTO en un {grado_lento*100}%")
-print(f"- Pertenece a NORMAL en un {grado_normal*100}%")
-print(f"- Pertenece a RÁPIDO en un {grado_rapido*100}%")
+for años in conductores :
+    grados = {
+        nombre: membresia_triangular(años,a,b,c)
+         for nombre, (a, b, c) in conjuntos.items()
+    }
+
+    print(f"Conductor con {años} años de experiencia:")
+    for nombre, grado in grados.items():
+        print(f" - pertenece a  {nombre} en un  {grado * 100:.1f}%")
+
+        categoria = max(grados, key=grados.get)
+        print(f" => Categoría dominante: {categoria} (grados{grados[categoria]: . 2f}")
